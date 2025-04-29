@@ -1,0 +1,7 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "appParcial:lib"
+
+    - path: "./test"
+      component: "appParcial:test:appParcial-test"
