@@ -64,3 +64,53 @@ moduloInfija unNumero otroNumero = unNumero `mod` otroNumero
 divisionPrefija :: Number -> Number -> Number
 divisionPrefija unNumero otroNumero = (/) unNumero otroNumero
 
+doble :: Number -> Number 
+doble numero = numero * 2
+
+triple :: Number -> Number
+triple numero = numero * 3
+
+cuadruple :: Number -> Number
+cuadruple numero = numero * 4
+
+aplicarTriple :: [Number] -> [Number]
+aplicarTriple lista = map triple lista
+
+aplicarTripleDejarPares :: [Number] -> [Number]
+aplicarTripleDejarPares lista = filter even (aplicarTriple lista)
+
+aplicarTripleDejarPares' :: [Number] -> [Number]
+aplicarTripleDejarPares' lista = (filter even . aplicarTriple) lista
+
+aplicarTripleDejarPares'' :: [Number] -> [Number]
+aplicarTripleDejarPares'' lista = (filter even.map triple) lista
+
+
+longitudStrings :: [String] -> [Number]
+longitudStrings lista = map length lista
+-- ["hola", "que", "tal"]
+
+tomar3CharsDeCada :: [String] -> [String]
+tomar3CharsDeCada lista = map (take 3) lista
+
+tomarNCharsDeCada :: [String] -> Number -> [String]
+tomarNCharsDeCada lista cantidad = map (take cantidad) lista
+-- map  (take 2)  ["hola", "que", "tal"]
+
+
+cortar :: a -> b
+cortar papa = undefined
+
+pelar :: a -> b
+pelar papa = undefined
+
+pelarYCortar :: a -> b
+pelarYCortar papa = cortar (pelar papa)
+
+pelarYCortarVarias :: [a] -> [b]
+pelarYCortarVarias papas = map pelarYCortar papas
+
+pelarYCortarVarias' :: [a] -> [b]
+pelarYCortarVarias' papas = map (cortar.pelar) papas
+
+
