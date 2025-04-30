@@ -73,11 +73,12 @@ triple numero = numero * 3
 cuadruple :: Number -> Number
 cuadruple numero = numero * 4
 
-aplicarTriple :: [Number] -> [Number]
-aplicarTriple lista = map triple lista
 
 aplicarTripleDejarPares :: [Number] -> [Number]
 aplicarTripleDejarPares lista = filter even (aplicarTriple lista)
+
+aplicarTriple :: [Number] -> [Number]
+aplicarTriple lista = map triple lista
 
 aplicarTripleDejarPares' :: [Number] -> [Number]
 aplicarTripleDejarPares' lista = (filter even . aplicarTriple) lista
@@ -90,12 +91,29 @@ longitudStrings :: [String] -> [Number]
 longitudStrings lista = map length lista
 -- ["hola", "que", "tal"]
 
+topTres :: [a] -> [a]
+topTres lista = take 3 lista
+
 tomar3CharsDeCada :: [String] -> [String]
-tomar3CharsDeCada lista = map (take 3) lista
+tomar3CharsDeCada lista = map topTres lista
+
+tomar3CharsDeCada' :: [String] -> [String]
+tomar3CharsDeCada' lista = map (take 3) lista
 
 tomarNCharsDeCada :: [String] -> Number -> [String]
 tomarNCharsDeCada lista cantidad = map (take cantidad) lista
 -- map  (take 2)  ["hola", "que", "tal"]
+
+
+cuantosPares :: [Number] -> Number
+cuantosPares = length . filter even
+
+type Papa = String
+
+--cortar :: Papa -> Papa
+
+--pelar :: Papa -> Papa
+
 
 
 cortar :: a -> b
@@ -106,6 +124,9 @@ pelar papa = undefined
 
 pelarYCortar :: a -> b
 pelarYCortar papa = cortar (pelar papa)
+
+pelarYCortar' :: a -> b
+pelarYCortar' = cortar . pelar 
 
 pelarYCortarVarias :: [a] -> [b]
 pelarYCortarVarias papas = map pelarYCortar papas
