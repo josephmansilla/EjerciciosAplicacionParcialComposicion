@@ -104,34 +104,39 @@ tomarNCharsDeCada :: [String] -> Number -> [String]
 tomarNCharsDeCada lista cantidad = map (take cantidad) lista
 -- map  (take 2)  ["hola", "que", "tal"]
 
+cuantosPares' :: [Number] -> Number
+cuantosPares' lista = length (filter even lista)
+
+cuantosPares'' :: [Number] -> Number
+cuantosPares'' lista = (length . filter even) lista
 
 cuantosPares :: [Number] -> Number
 cuantosPares = length . filter even
 
+-- Ejericio Papas
+
 type Papa = String
 
 --cortar :: Papa -> Papa
-
 --pelar :: Papa -> Papa
 
-
-
-cortar :: a -> b
+cortar :: Papa -> Papa
 cortar papa = undefined
 
-pelar :: a -> b
+pelar :: Papa -> Papa
 pelar papa = undefined
 
-pelarYCortar :: a -> b
+pelarYCortar :: Papa -> Papa
 pelarYCortar papa = cortar (pelar papa)
 
-pelarYCortar' :: a -> b
+pelarYCortar' :: Papa -> Papa
 pelarYCortar' = cortar . pelar 
 
-pelarYCortarVarias :: [a] -> [b]
+pelarYCortarVarias :: [Papa] -> [Papa]
 pelarYCortarVarias papas = map pelarYCortar papas
 
-pelarYCortarVarias' :: [a] -> [b]
+pelarYCortarVarias' :: [Papa] -> [Papa]
 pelarYCortarVarias' papas = map (cortar.pelar) papas
 
-
+pelarYCortarVarias'' :: [Papa] -> [Papa]
+pelarYCortarVarias'' = map (cortar.pelar)
